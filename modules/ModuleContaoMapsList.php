@@ -48,7 +48,7 @@ class ModuleContaoMapsList extends Module
 
     protected function functionalMap($map)
     {
-
+        // Todo implement me!!!
     }
 
     protected function staticMap($map)
@@ -96,11 +96,16 @@ class ModuleContaoMapsList extends Module
                 case 'mac':
                     $appButton = '<a href="http://maps.apple.com/maps?q='.$adress.'">In Karten öffnen</a>';
                     break;
-                case 'win-ce':
-                case 'win':
                 case 'android':
                     $appButton = '<a href="http://maps.google.com/maps?q='.$adress.'">In Google Maps öffnen</a>';
                     break;
+                case 'win-ce':
+                case 'win':
+                    if($this->Environment->agent->browser.$this->Environment->agent->version == 'ie9') {
+                        $appButton = '<a href="http:/bingmaps:?'.($map['useLongitudeAndLatitude'] ? 'where=' : 'query=').
+                                     $adress.'">In Bing Maps öffnen</a>';
+                        break;
+                    }
                 default:
                     $appButton = '<a href="http://maps.google.com/maps?q='.$adress.'">Zu Google Maps wechseln</a>';
             }
