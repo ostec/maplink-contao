@@ -14,7 +14,7 @@ class ModuleContaoMapsList extends Module
      *
      * @var string
      */
-    protected $strTemplate = 'static';
+    protected $strTemplate = 'list';
     protected $mapList;
     protected $mapTypes = array(
         1 => 'roadmap',
@@ -30,7 +30,7 @@ class ModuleContaoMapsList extends Module
     {
         /** @var \Contao\Database\Result $rs */
         $rs = DATABASE::getInstance()
-                      ->query('SELECT * FROM tl_contaoMaps')
+                      ->query('SELECT * FROM tl_contaoMaps ORDER BY id')
                       ->fetchAllAssoc();
 
         $this->import('Environment');
@@ -44,6 +44,8 @@ class ModuleContaoMapsList extends Module
                     $this->staticMap($map);
             }
         }
+
+        $this->Template->mapList = $this->mapList;
     }
 
     protected function functionalMap($map)
@@ -75,15 +77,15 @@ class ModuleContaoMapsList extends Module
         }
 
         $this->appButton($map, $adress);
-        $this->Template->mapID   = $map['id'];
-        $this->Template->mapLink = $mapLink;
-        $this->Template->script  = '<script async="async">'.
-                                   str_replace(
-                                       array('%id%', '%mapLink%', '%name%'),
-                                       array($map['id'], $mapLink, $map['name']),
-                                       file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
-                                   ).
-                                   '</script>';
+        $this->mapList[$map['id']]['mapID']   = $map['id'];
+        $this->mapList[$map['id']]['mapLink'] = $mapLink;
+        $this->mapList[$map['id']]['script']  = '<script async="async">'.
+                                                str_replace(
+                                                    array('%id%', '%mapLink%', '%name%'),
+                                                    array($map['id'], $mapLink, $map['name']),
+                                                    file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
+                                                ).
+                                                '</script>';
     }
 
     protected function appButton($map, $adress)
@@ -101,7 +103,7 @@ class ModuleContaoMapsList extends Module
                     break;
                 case 'win-ce':
                 case 'win':
-                    if($this->Environment->agent->browser.$this->Environment->agent->version == 'ie9') {
+                    if($this->Environment->agent->browser.$this->Environment->agent->version >= 'ie9') {
                         $appButton = '<a href="http:/bingmaps:?'.($map['useLongitudeAndLatitude'] ? 'where=' : 'query=').
                                      $adress.'">In Bing Maps öffnen</a>';
                         break;
@@ -111,6 +113,6 @@ class ModuleContaoMapsList extends Module
             }
         }
 
-        $this->Template->appButton = $appButton;
+        $this->mapList[$map['id']]['appButton'] = $appButton;
     }
 }

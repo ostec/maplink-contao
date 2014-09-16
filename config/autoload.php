@@ -26,5 +26,5 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'static' => 'system/modules/contaoMaps/templates',
+	'list' => 'system/modules/contaoMaps/templates',
 ));
