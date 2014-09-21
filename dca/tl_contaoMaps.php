@@ -89,7 +89,8 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
     (
         '__selector__' => array('mapMode'),
         'default'      => '{map_legend},name,adress,showMark,longitudeAndLatitude,useLongitudeAndLatitude;'.
-                          '{gfx_legend},mapMode,mapType,appButton,zoom;',
+                          '{gfx_legend},mapMode,mapType,appButton,zoom;'.
+                          '{adv_legend},googleApiKey;',
         '2'            => '{map_legend},name,adress,showMark,longitudeAndLatitude,useLongitudeAndLatitude;'.
                           '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom;'.
                           '{adv_legend},googleApiKey;',

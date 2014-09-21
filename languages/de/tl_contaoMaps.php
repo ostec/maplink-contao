@@ -20,7 +20,7 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['adv_legend'] = 'Erweiterete Einstellungen'
  * fields
  */
 $GLOBALS['TL_LANG']['tl_contaoMaps']['name'][0]                    = 'Karten Name';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['name'][1]                    = 'Tragen sie einen Namen für diese Karte ein';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['name'][1]                    = 'Tragen sie einen Namen für diese Karte ein, der name wird als title verwendet';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['adress'][0]                  = 'Adresse';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['adress'][1]                  = 'Die Adresse welche Zentriert werden soll';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['showMark'][0]                = 'Markieren';
@@ -28,7 +28,7 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['showMark'][1]                = 'legt fest 
 $GLOBALS['TL_LANG']['tl_contaoMaps']['longitudeAndLatitude'][0]    = 'Längen- und Breitengrad';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['longitudeAndLatitude'][1]    = 'Tragen sie hier denn längen- und Breitengrad ein';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['useLongitudeAndLatitude'][0] = 'Längen- und Breitengrad bevorzugen';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['useLongitudeAndLatitude'][1] = 'Legt fest ob der Längen- und Breite bevorzugt werden soll';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['useLongitudeAndLatitude'][1] = 'Legt fest ob der Längen- und Breitengrad bevorzugt werden soll';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mapMode'][0]                 = 'Ausgabe';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mapMode'][1]                 = 'Legt fest wie die Karte ausgegeben werden soll';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mapType'][0]                 = 'Darstellung';

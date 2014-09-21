@@ -33,15 +33,25 @@ class ModuleContaoMapsList extends Module
                       ->query('SELECT * FROM tl_contaoMaps ORDER BY id')
                       ->fetchAllAssoc();
 
+        $functional = array(
+            'win','mac','unix'
+        );
+
         $this->import('Environment');
 
         foreach ($rs as $map) {
             switch ($map['mapMode']) {
+                case 1:
+                    $this->staticMap($map);
                 case 2:
                     $this->functionalMap($map);
                     break;
                 default:
-                    $this->staticMap($map);
+                    if(in_array($this->Environment->agent->os,$functional)) {
+                        $this->functionalMap($map);
+                    } else {
+                        $this->functionalMap($map);
+                    }
             }
         }
 
@@ -59,6 +69,7 @@ class ModuleContaoMapsList extends Module
                    'maptype='.$this->mapTypes[$map['mapType']].
                    '&zoom='.$map['zoom'].
                    '&sensor=false'.
+                   '&key='.$map['googleApiKey'].
                    ($this->Environment->agent->mobile ? '&scale=2' : '');
 
         if ($map['useLongitudeAndLatitude']) {
@@ -104,8 +115,7 @@ class ModuleContaoMapsList extends Module
                 case 'win-ce':
                 case 'win':
                     if($this->Environment->agent->browser.$this->Environment->agent->version >= 'ie9') {
-                        $appButton = '<a href="http:/bingmaps:?'.($map['useLongitudeAndLatitude'] ? 'where=' : 'query=').
-                                     $adress.'">In Bing Maps öffnen</a>';
+                        $appButton = '<a href="http://maps.bing.com/maps?q='.$adress.'">In Bing Maps öffnen</a>';
                         break;
                     }
                 default:
@@ -113,6 +123,6 @@ class ModuleContaoMapsList extends Module
             }
         }
 
-        $this->mapList[$map['id']]['appButton'] = $appButton;
+        $this->mapList[$map['id']]['appButton'] = "<br>".$appButton;
     }
 }
