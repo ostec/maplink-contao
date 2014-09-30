@@ -1,4 +1,5 @@
 <?php
+
 /**
  * contaoMapsTrait
  *
@@ -23,7 +24,8 @@ trait contaoMaps
 
     protected $map;
 
-    protected function make($map) {
+    protected function make($map)
+    {
         switch ($map['mapMode']) {
             case 1:
                 $this->staticMap($map);
@@ -98,20 +100,27 @@ trait contaoMaps
             switch ($this->Environment->agent->os) {
                 case 'ios':
                 case 'mac':
-                    $appButton = '<a href="http://maps.apple.com/maps?q='.$adress.'">In Karten öffnen</a>';
+                    $message = 'In Karten öffnen';
+                    $service = 'apple';
                     break;
                 case 'android':
-                    $appButton = '<a href="http://maps.google.com/maps?q='.$adress.'">In Google Maps öffnen</a>';
+                    $message = 'In Google Maps öffnen';
+                    $service = 'google';
                     break;
                 case 'win-ce':
                 case 'win':
                     if ($this->Environment->agent->browser == 'ie' && $this->Environment->agent->version >= '9') {
-                        $appButton = '<a href="http://maps.bing.com/?where='.$adress.'">In Bing Maps öffnen</a>';
+                        $message = 'In Bing Maps öffnen';
+                        $service = 'bing';
                         break;
                     }
                 default:
-                    $appButton = '<a href="http://maps.google.com/maps?q='.$adress.'">Zu Google Maps wechseln</a>';
+                    $message = 'Zu Google Maps wechseln';
+                    $service = 'google';
             }
+
+            $appButton = '<a href="http://maps.'.$service.'.com/?'.
+                         ($service == 'bing' ? 'where' : 'q').'='.$adress.'">'.$message.'</a>';
         }
 
         $this->map['appButton'] = $appButton;

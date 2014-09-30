@@ -1,6 +1,6 @@
 <?php
 /**
- * Back end modules
+ * Backend modules
  */
 $GLOBALS['BE_MOD']['content']['contaoMaps'] = array
 (
@@ -9,7 +9,7 @@ $GLOBALS['BE_MOD']['content']['contaoMaps'] = array
 );
 
 /**
- * Front end modules
+ * Frontend modules
  */
 $GLOBALS['FE_MOD']['contaoMaps'] = array
 (
