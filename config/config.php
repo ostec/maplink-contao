@@ -2,7 +2,8 @@
 /**
  * Back end modules
  */
-$GLOBALS['BE_MOD']['content']['contaoMaps'] = array(
+$GLOBALS['BE_MOD']['content']['contaoMaps'] = array
+(
     'tables' => array('tl_contaoMaps'),
     'icon'   => 'system/modules/contaoMaps/assets/images/contaoMaps-icon.png'
 );
@@ -12,5 +13,13 @@ $GLOBALS['BE_MOD']['content']['contaoMaps'] = array(
  */
 $GLOBALS['FE_MOD']['contaoMaps'] = array
 (
-    'map_list'     => 'ModuleContaoMapsList',
+    'Alle Karten Ausgeben' => 'ModuleContaoMapsList',
+);
+
+/**
+ * Hooks
+ */
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array
+(
+    'CMgetMap','getMap'
 );

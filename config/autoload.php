@@ -17,6 +17,7 @@
 ClassLoader::addClasses(array
 (
 	// Modules
+	'CMgetMap'             => 'system/modules/contaoMaps/modules/CMgetMap.php',
 	'ModuleContaoMapsList' => 'system/modules/contaoMaps/modules/ModuleContaoMapsList.php',
 ));
 
