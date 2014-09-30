@@ -13,7 +13,7 @@ $GLOBALS['BE_MOD']['content']['contaoMaps'] = array
  */
 $GLOBALS['FE_MOD']['contaoMaps'] = array
 (
-    'Alle Karten Ausgeben' => 'ModuleContaoMapsList',
+    'map_list' => 'ModuleContaoMapsList',
 );
 
 /**
