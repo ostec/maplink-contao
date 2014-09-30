@@ -43,6 +43,7 @@ class ModuleContaoMapsList extends Module
             switch ($map['mapMode']) {
                 case 1:
                     $this->staticMap($map);
+                    break;
                 case 2:
                     $this->functionalMap($map);
                     break;
@@ -95,8 +96,7 @@ class ModuleContaoMapsList extends Module
                                                     array('%id%', '%mapLink%', '%name%'),
                                                     array($map['id'], $mapLink, $map['name']),
                                                     file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
-                                                ).
-                                                '</script>';
+                                                ).'</script>';
     }
 
     protected function appButton($map, $adress)
