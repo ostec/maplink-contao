@@ -89,11 +89,11 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
     (
         '__selector__' => array('mapMode'),
         'default'      => '{map_legend},name,adress,showMark,googleApiKey;'.
-                          '{gfx_legend},mapMode,mapType,appButton,zoom,staticSize,size;'.
-                          '{adv_legend},longitudeAndLatitude,useLongitudeAndLatitude;',
+                          '{gfx_legend},mapMode,mapType,appButton,zoom,mobileScale,size,staticSize;'.
+                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude;',
         '2'            => '{map_legend},name,adress,showMark,googleApiKey;'.
-                          '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom,staticSize,size;'.
-                          '{adv_legend},longitudeAndLatitude,useLongitudeAndLatitude;',
+                          '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom,mobileScale,size,staticSize;'.
+                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude;',
     ),
     // Fields
     'fields'   => array
@@ -154,7 +154,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'eval'      => array(
                 'multiple' => true,
                 'size'     => 2,
-                'tl_class' => 'clr w50'
+                'tl_class' => 'w50'
             ),
             'sql'       => "varchar(255) NOT NULL"
         ),
@@ -236,10 +236,11 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         'size'                    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['size'],
             'inputType' => 'checkbox',
-            'default'   => true,
+            'default'   => false,
             'exclude'   => true,
             'eval'      => array(
-                'tl_class' => ' w50 m12'
+                'submitOnChange' => true,
+                'tl_class' => 'clr w50 m12'
             ),
             'sql'       => "BOOLEAN NOT NULL"
         ),
@@ -250,9 +251,18 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'eval'      => array(
                 'multiple' => true,
                 'size'     => 2,
-                'tl_class' => 'clr w50'
+                'tl_class' => 'w50'
             ),
             'sql'       => "varchar(255) NOT NULL"
+        ),
+        'mobileScale'             => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mobileScale'],
+            'inputType' => 'checkbox',
+            'default'   => true,
+            'eval'      => array(
+                'tl_class' => 'clr w50 m12'
+            ),
+            'sql'       => "boolean NOT NULL"
         ),
         'googleApiKey'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'],

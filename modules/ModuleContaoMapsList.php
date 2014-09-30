@@ -72,7 +72,7 @@ class ModuleContaoMapsList extends Module
                    '&zoom='.$map['zoom'].
                    '&sensor=false'.
                    '&key='.$map['googleApiKey'].
-                   ($this->Environment->agent->mobile ? '&scale=2' : '');
+                   ($this->Environment->agent->mobile && $map['mobileScale'] ? '&scale=2' : '');
 
         if ($map['useLongitudeAndLatitude']) {
             $map['longitudeAndLatitude'] = implode(',', unserialize($map['longitudeAndLatitude']));
@@ -92,18 +92,20 @@ class ModuleContaoMapsList extends Module
         $this->mapList[$map['id']]['mapID']   = $map['id'];
         $this->mapList[$map['id']]['mapLink'] = $mapLink;
 
-        if ($map['size']) {
+        $staticSize = unserialize($map['staticSize']);
+
+        if ($map['size'] && $staticSize[0] > 0 && $staticSize[1] > 0) {
+            $this->mapList[$map['id']]['map'] = '<img src="'.$mapLink.
+                                                '&size='.implode('x', $staticSize).
+                                                '" width="'.$staticSize[0].'" height="'.$staticSize[1].
+                                                '" title="'.$map['name'].'">';
+        } else {
             $this->mapList[$map['id']]['map'] = '<script async="async">'.
                                                 str_replace(
                                                     array('%id%', '%mapLink%', '%name%'),
                                                     array($map['id'], $mapLink, $map['name']),
                                                     file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
                                                 ).'</script>';
-        } else {
-            $this->mapList[$map['id']]['map'] = '<img src="'.$mapLink.
-                                                '&size='.implode('x', unserialize($map['staticSize'])).
-                                                '" width="'.$map['staticSize'][0].'" height="'.$map['staticSize'][1].
-                                                '" title="'.$map['name'].'">';
         }
 
         $this->appButton($map, $adress);
@@ -124,8 +126,8 @@ class ModuleContaoMapsList extends Module
                     break;
                 case 'win-ce':
                 case 'win':
-                    if ($this->Environment->agent->browser.$this->Environment->agent->version >= 'ie9') {
-                        $appButton = '<a href="http://maps.bing.com/maps?q='.$adress.'">In Bing Maps öffnen</a>';
+                    if ($this->Environment->agent->browser == 'ie' && $this->Environment->agent->version >= '9') {
+                        $appButton = '<a href="http://maps.bing.com/?where='.$adress.'">In Bing Maps öffnen</a>';
                         break;
                     }
                 default:
