@@ -7,7 +7,7 @@
 foreach ($this->mapList as $map): ?>
     <div>
         <div id="cm<?php echo $map['mapID'] ?>" class="contaoMaps">
-            <?php echo $map['script']; ?>
+            <?php echo $map['map']; ?>
         </div>
         <?php echo $map['appButton']; ?>
     </div>

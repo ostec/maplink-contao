@@ -39,8 +39,12 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['hideUI'][0]                  = 'Steuerung 
 $GLOBALS['TL_LANG']['tl_contaoMaps']['hideUI'][1]                  = 'Legt fest ob Steuer elemente auf der Karte ausgeblendet werden soll';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['zoom'][0]                    = 'Zoom Stufe';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['zoom'][1]                    = 'legt die Zoomstufe fest';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'][1]            = 'Hinterlegen sie ihren Google API Key';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'][0]            = 'Google API Key';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'][1]            = 'Hinterlegen sie ihren Google API Key (nur bei Funktioneller Ausgabe)';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['size'][0]                    = 'Inhalt an Container Angepasst';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['size'][1]                    = 'Legt fest ob die Größe des Bildes durch denn Container ermittelt werden soll';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['staticSize'][0]              = 'Statische Größe';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['staticSize'][1]              = 'Legt Breite und Höhe in px fest (Keine wirkung wenn der Inhalt an Container angepasst ist)';
 /*
  * selects
  */

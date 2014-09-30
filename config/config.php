@@ -12,5 +12,5 @@ $GLOBALS['BE_MOD']['content']['contaoMaps'] = array(
  */
 $GLOBALS['FE_MOD']['contaoMaps'] = array
 (
-    'maps_list'     => 'ModuleContaoMapsList',
+    'map_list'     => 'ModuleContaoMapsList',
 );

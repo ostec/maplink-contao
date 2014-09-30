@@ -16,6 +16,11 @@ class ModuleContaoMapsList extends Module
      */
     protected $strTemplate = 'list';
     protected $mapList;
+    protected $functional = array(
+        'win',
+        'mac',
+        'unix'
+    );
     protected $mapTypes = array(
         1 => 'roadmap',
         2 => 'satellite',
@@ -33,10 +38,6 @@ class ModuleContaoMapsList extends Module
                       ->query('SELECT * FROM tl_contaoMaps ORDER BY id')
                       ->fetchAllAssoc();
 
-        $functional = array(
-            'win','mac','unix'
-        );
-
         $this->import('Environment');
 
         foreach ($rs as $map) {
@@ -48,7 +49,7 @@ class ModuleContaoMapsList extends Module
                     $this->functionalMap($map);
                     break;
                 default:
-                    if(in_array($this->Environment->agent->os,$functional)) {
+                    if (in_array($this->Environment->agent->os, $this->functional)) {
                         $this->functionalMap($map);
                     } else {
                         $this->functionalMap($map);
@@ -74,8 +75,8 @@ class ModuleContaoMapsList extends Module
                    ($this->Environment->agent->mobile ? '&scale=2' : '');
 
         if ($map['useLongitudeAndLatitude']) {
-            $map['longitudeAndLatitude'] = implode(',', $map['longitudeAndLatitude']);
-            $adress                      = $map['longitudeAndLatitude'];
+            $map['longitudeAndLatitude'] = implode(',', unserialize($map['longitudeAndLatitude']));
+            $adress = $map['longitudeAndLatitude'];
 
         } else {
             $map['adress'] = str_replace(" ", '+', $map['adress']);
@@ -88,15 +89,24 @@ class ModuleContaoMapsList extends Module
             $mapLink .= '&center='.$adress;
         }
 
-        $this->appButton($map, $adress);
         $this->mapList[$map['id']]['mapID']   = $map['id'];
         $this->mapList[$map['id']]['mapLink'] = $mapLink;
-        $this->mapList[$map['id']]['script']  = '<script async="async">'.
+
+        if ($map['size']) {
+            $this->mapList[$map['id']]['map'] = '<script async="async">'.
                                                 str_replace(
                                                     array('%id%', '%mapLink%', '%name%'),
                                                     array($map['id'], $mapLink, $map['name']),
                                                     file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
                                                 ).'</script>';
+        } else {
+            $this->mapList[$map['id']]['map'] = '<img src="'.$mapLink.
+                                                '&size='.implode('x', unserialize($map['staticSize'])).
+                                                '" width="'.$map['staticSize'][0].'" height="'.$map['staticSize'][1].
+                                                '" title="'.$map['name'].'">';
+        }
+
+        $this->appButton($map, $adress);
     }
 
     protected function appButton($map, $adress)
@@ -114,7 +124,7 @@ class ModuleContaoMapsList extends Module
                     break;
                 case 'win-ce':
                 case 'win':
-                    if($this->Environment->agent->browser.$this->Environment->agent->version >= 'ie9') {
+                    if ($this->Environment->agent->browser.$this->Environment->agent->version >= 'ie9') {
                         $appButton = '<a href="http://maps.bing.com/maps?q='.$adress.'">In Bing Maps öffnen</a>';
                         break;
                     }
@@ -123,6 +133,6 @@ class ModuleContaoMapsList extends Module
             }
         }
 
-        $this->mapList[$map['id']]['appButton'] = "<br>".$appButton;
+        $this->mapList[$map['id']]['appButton'] = $appButton;
     }
 }

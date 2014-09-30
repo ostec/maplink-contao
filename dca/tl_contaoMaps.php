@@ -88,12 +88,12 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
     'palettes' => array
     (
         '__selector__' => array('mapMode'),
-        'default'      => '{map_legend},name,adress,showMark,longitudeAndLatitude,useLongitudeAndLatitude;'.
-                          '{gfx_legend},mapMode,mapType,appButton,zoom;'.
-                          '{adv_legend},googleApiKey;',
-        '2'            => '{map_legend},name,adress,showMark,longitudeAndLatitude,useLongitudeAndLatitude;'.
-                          '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom;'.
-                          '{adv_legend},googleApiKey;',
+        'default'      => '{map_legend},name,adress,showMark,googleApiKey;'.
+                          '{gfx_legend},mapMode,mapType,appButton,zoom,staticSize,size;'.
+                          '{adv_legend},longitudeAndLatitude,useLongitudeAndLatitude;',
+        '2'            => '{map_legend},name,adress,showMark,googleApiKey;'.
+                          '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom,staticSize,size;'.
+                          '{adv_legend},longitudeAndLatitude,useLongitudeAndLatitude;',
     ),
     // Fields
     'fields'   => array
@@ -112,6 +112,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'inputType' => 'text',
             'exclude'   => true,
             'sorting'   => true,
+            'default'   => '',
             'flag'      => 1,
             'search'    => true,
             'eval'      => array(
@@ -121,68 +122,73 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
                 'maxlength'      => 127,
                 'tl_class'       => 'w50'
             ),
-            'sql'       => "varchar(127) NOT NULL default ''"
+            'sql'       => "varchar(127) NOT NULL"
         ),
         'adress'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['adress'],
             'inputType' => 'text',
             'exclude'   => true,
             'sorting'   => true,
+            'default'   => '',
             'search'    => true,
             'eval'      => array(
                 'maxlength' => 127,
                 'tl_class'  => 'clr w50',
             ),
-            'sql'       => "varchar(127) default ''"
+            'sql'       => "varchar(127)"
         ),
         'showMark'                => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['showMark'],
             'inputType' => 'checkbox',
             'exclude'   => true,
+            'default'   => true,
             'eval'      => array(
                 'tl_class' => 'w50 m12',
             ),
-            'sql'       => "boolean NOT NULL default true"
+            'sql'       => "boolean NOT NULL"
         ),
         'longitudeAndLatitude'    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['longitudeAndLatitude'],
             'inputType' => 'text',
+            'default'   => '',
             'eval'      => array(
                 'multiple' => true,
                 'size'     => 2,
                 'tl_class' => 'clr w50'
             ),
-            'sql'       => "varchar(255) NOT NULL default ''"
+            'sql'       => "varchar(255) NOT NULL"
         ),
         'useLongitudeAndLatitude' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['useLongitudeAndLatitude'],
             'inputType' => 'checkbox',
             'exclude'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'w50 m12',
             ),
-            'sql'       => "boolean NOT NULL default false"
+            'sql'       => "boolean NOT NULL"
         ),
         'mapMode'                 => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mapMode'],
             'inputType' => 'select',
             'exclude'   => true,
-            'mandatory' => true,
+            'default'   => 1,
             'options'   => array(
                 1 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapMode'][1],
                 2 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapMode'][2],
             ),
             'eval'      => array(
+                'mandatory'      => true,
                 'submitOnChange' => true,
                 'tl_class'       => 'w50'
             ),
-            'sql'       => "tinyint(1) NOT NULL default 1"
+            'sql'       => "tinyint(1) NOT NULL"
         ),
         'mapType'                 => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mapType'],
             'inputType' => 'select',
             'exclude'   => true,
-            'mandatory' => true,
+            'default'   => 1,
             'options'   => array(
                 1 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][1],
                 2 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][2],
@@ -190,38 +196,63 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
                 4 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][4],
             ),
             'eval'      => array(
-                'tl_class' => 'w50'
+                'mandatory' => true,
+                'tl_class'  => 'w50'
             ),
-            'sql'       => "tinyint(1) NOT NULL default 1"
+            'sql'       => "tinyint(1) NOT NULL"
         ),
         'appButton'               => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['appButton'],
             'inputType' => 'checkbox',
+            'default'   => true,
             'exclude'   => true,
             'eval'      => array(
                 'tl_class' => 'clr w50 m12'
             ),
-            'sql'       => "boolean NOT NULL default true"
+            'sql'       => "boolean NOT NULL"
         ),
         'hideUI'                  => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['hideUI'],
             'inputType' => 'checkbox',
             'exclude'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'w50 m12'
             ),
-            'sql'       => "boolean NOT NULL default false"
+            'sql'       => "boolean NOT NULL"
         ),
         'zoom'                    => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['zoom'],
             'inputType' => 'select',
             'exclude'   => true,
             'mandatory' => true,
+            'default'   => 16,
             'options'   => $zoomSteps,
             'eval'      => array(
                 'tl_class' => 'clr w50'
             ),
-            'sql'       => "tinyint(2) NOT NULL default 16"
+            'sql'       => "tinyint(2) NOT NULL"
+        ),
+        'size'                    => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['size'],
+            'inputType' => 'checkbox',
+            'default'   => true,
+            'exclude'   => true,
+            'eval'      => array(
+                'tl_class' => ' w50 m12'
+            ),
+            'sql'       => "BOOLEAN NOT NULL"
+        ),
+        'staticSize'              => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['staticSize'],
+            'inputType' => 'text',
+            'default'   => 0,
+            'eval'      => array(
+                'multiple' => true,
+                'size'     => 2,
+                'tl_class' => 'clr w50'
+            ),
+            'sql'       => "varchar(255) NOT NULL"
         ),
         'googleApiKey'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'],
@@ -229,11 +260,13 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'exclude'   => true,
             'sorting'   => true,
             'search'    => true,
+            'default'   => '',
             'eval'      => array(
+                'mandatory' => true,
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
             ),
-            'sql'       => "varchar(255) default ''"
+            'sql'       => "varchar(255)"
         )
     )
 );
