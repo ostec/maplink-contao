@@ -13,6 +13,8 @@ class CMgetMap extends Frontend
     use contaoMaps;
 
     /**
+     * using by insert tag return map source code
+     *
      * @param int $id
      *
      * @return mixed

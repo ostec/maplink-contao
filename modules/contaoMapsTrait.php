@@ -9,12 +9,22 @@
  */
 trait contaoMaps
 {
+    /**
+     * Operating Systems for default using Functional Map
+     *
+     * @var array $functional
+     */
     protected $functional = array(
         'win',
         'mac',
         'unix'
     );
 
+    /**
+     * Supported Map type by googel API
+     *
+     * @var array $mapTypes
+     */
     protected $mapTypes = array(
         1 => 'roadmap',
         2 => 'satellite',
@@ -22,8 +32,18 @@ trait contaoMaps
         4 => 'terrain',
     );
 
+    /**
+     * Summerized Map
+     *
+     * @var array $map
+     */
     protected $map;
 
+    /**
+     * choice the map mode
+     *
+     * @param $map
+     */
     protected function make($map)
     {
         switch ($map['mapMode']) {
@@ -42,11 +62,21 @@ trait contaoMaps
         }
     }
 
+    /**
+     * summerize map for functional
+     *
+     * @param $map
+     */
     protected function functionalMap($map)
     {
         // Todo implement me!!!
     }
 
+    /**
+     * summerize map for static
+     *
+     * @param $map
+     */
     protected function staticMap($map)
     {
         $mapLink = 'http://maps.googleapis.com/maps/api/staticmap?'.
@@ -92,6 +122,12 @@ trait contaoMaps
         $this->appButton($map, $adress);
     }
 
+    /**
+     * generate the link button to App or Site
+     *
+     * @param $map
+     * @param $adress
+     */
     protected function appButton($map, $adress)
     {
         $appButton = '';

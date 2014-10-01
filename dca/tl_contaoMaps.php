@@ -13,12 +13,8 @@ for ($i = 0; $i <= 25; $i++) {
     $zoomSteps[$i] = $i;
 }
 
-/**
- * Table tl_theme
- */
 $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
 (
-
     // Config
     'config'   => array
     (

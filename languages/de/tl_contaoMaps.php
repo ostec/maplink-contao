@@ -56,8 +56,3 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][1] = 'Einfach';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][2] = 'Satellite';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][3] = 'Hybrid';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][4] = 'Terrain';
-/**
- * content element
- */
-$GLOBALS['TL_LANG']['tl_contaoMaps']['ce']['cmMapId'][1] = 'Vorhandene Karte wählen';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['ce']['cmMapId'][2] = 'Wählen sie eine Vorhandene Karte aus';

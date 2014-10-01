@@ -2,15 +2,10 @@
     <?php if ($this->headline): ?>
     <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
 <?php endif; ?>
-<?php
-    foreach ($this->mapList as $map): ?>
-        <div>
-            <div id="cm<?php echo $map['mapID'] ?>" class="contaoMaps">
-                <?php echo $map['map']; ?>
-            </div>
-            <?php echo $map['appButton']; ?>
-        </div>
-    <?php
-    endforeach;
-?>
+<div>
+    <div id="cm<?php echo $this->map['mapID'] ?>">
+        <?php echo $this->map['map']; ?>
+    </div>
+    <?php echo $this->map['appButton']; ?>
+</div>
 </div>
