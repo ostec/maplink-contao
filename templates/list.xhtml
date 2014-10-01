@@ -5,6 +5,9 @@
 <?php
     foreach ($this->mapList as $map): ?>
         <div>
+        <?php if(isset($map['external'])) : ?>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <?php endif ?>
             <div id="cm<?php echo $map['mapID'] ?>" class="contaoMaps">
                 <?php echo $map['map']; ?>
             </div>

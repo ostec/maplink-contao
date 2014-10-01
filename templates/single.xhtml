@@ -3,6 +3,9 @@
     <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
 <?php endif; ?>
 <div>
+    <?php if(isset($this->map['external'])) : ?>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <?php endif ?>
     <div id="cm<?php echo $this->map['mapID'] ?>">
         <?php echo $this->map['map']; ?>
     </div>

@@ -1,5 +1,6 @@
-Contao Maps (MapLink)
+ostec Contao Maps (MapLink)
 ======================
+Version: 1.0
 
 Requirements:
 ----------------------
@@ -25,9 +26,11 @@ Installation
 
 Credits
 ----------------------
-Icon by [Double-J Design][1]
+Developed by [ostec][1]
+Icon by [Double-J Design][5]
     
-[1]: http://www.doublejdesign.co.uk
+[1]: http://www.ostec.de
 [2]: notlinkedyet
 [3]: notlinkedyet
 [4]: notlinkedyet
+[5]: http://www.doublejdesign.co.uk

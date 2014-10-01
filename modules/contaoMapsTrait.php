@@ -69,7 +69,21 @@ trait contaoMaps
      */
     protected function functionalMap($map)
     {
-        // Todo implement me!!!
+        $arrays = array('longitudeAndLatitude', 'staticSize');
+        $parse  = array();
+
+        foreach ($map as $key => $val) {
+            if (in_array($key, $arrays)) {
+                $val = json_encode(unserialize($val), JSON_HEX_QUOT | JSON_HEX_APOS);
+            }
+
+            $parse['%'.$key.'%'] = $val;
+        }
+
+        $this->map['mapID']        = $map['id'];
+        $this->map['map']       = $this->getFileReplace($parse, '/js/functional.js');
+        $this->map['appButton'] = null;
+        $this->map['external']  = true;
     }
 
     /**
@@ -111,12 +125,13 @@ trait contaoMaps
                                 '" width="'.$staticSize[0].'" height="'.$staticSize[1].
                                 '" title="'.$map['name'].'">';
         } else {
-            $this->map['map'] = '<script async="async">'.
-                                str_replace(
-                                    array('%id%', '%mapLink%', '%name%'),
-                                    array($map['id'], $mapLink, $map['name']),
-                                    file_get_contents(dirname(__FILE__).'/../assets/js/autoSize.js')
-                                ).'</script>';
+            $parse = array(
+                '%id%'      => $map['id'],
+                '%mapLink%' => $mapLink,
+                '%%name%'   => $map['name']
+            );
+
+            $this->map['map'] = $this->getFileReplace($parse, '/js/autoSize.js');
         }
 
         $this->appButton($map, $adress);
@@ -160,5 +175,18 @@ trait contaoMaps
         }
 
         $this->map['appButton'] = $appButton;
+    }
+
+    protected function getFileReplace($parse, $filepath)
+    {
+        $replace = array_values($parse);
+        $needle  = array_values(array_flip($parse));
+
+        return '<script async="async">'.
+               str_replace(
+                   $needle,
+                   $replace,
+                   file_get_contents(dirname(__FILE__).'/../assets'.$filepath)
+               ).'</script>';
     }
 }

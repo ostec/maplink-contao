@@ -171,6 +171,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'default'   => 1,
             'options'   => array(
                 1 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapMode'][1],
+                2 => &$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapMode'][2],
             ),
             'eval'      => array(
                 'mandatory'      => true,
