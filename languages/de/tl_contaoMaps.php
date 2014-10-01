@@ -14,7 +14,9 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['show'][1]   = 'Details der Karte ID %s anz
  * legends
  */
 $GLOBALS['TL_LANG']['tl_contaoMaps']['map_legend'] = 'Karten Daten';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['gfx_legend'] = 'Karten Darstellung und Optionen';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['gfx_legend'] = 'Karten Darstellung';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['opt_legend'] = 'Karten Optionen';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_legend'] = 'Mobile Optionen';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['adv_legend'] = 'Erweiterete Einstellungen';
 /*
  * fields
@@ -47,6 +49,15 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['staticSize'][0]              = 'Statische 
 $GLOBALS['TL_LANG']['tl_contaoMaps']['staticSize'][1]              = 'Legt Breite und Höhe in px fest';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mobileScale'][0]             = 'Automatsiche Skalierung';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mobileScale'][1]             = 'Aktivieren sie hier die Automatische Skalierung für Mobile Geräte mit sehr hoher Auflösung (bsp.: Retina, Amoled...)';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['moveable'][0]                = 'Bewegen deaktivieren';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['moveable'][1]                = 'Deaktiviert die Möglichkeit, die karte zu bewegen';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['zoomable'][0]                = 'Zoom deaktivieren';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['zoomable'][1]                = 'Deaktiviert die Möglichkeit, denn Zoom der Karte zu ändern';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'][0]            = 'Bewegen auf Mobilen Geräten deaktivieren';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'][1]            = 'Deaktiviert die Möglichkeit, die karte zu bewegen';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'][0]            = 'Zoom auf Mobilen Geräten deaktivieren';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'][1]            = 'Deaktiviert die Möglichkeit, denn Zoom der Karte zu ändern';
+
 /*
  * selects
  */

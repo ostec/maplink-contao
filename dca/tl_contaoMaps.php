@@ -85,11 +85,15 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
     (
         '__selector__' => array('mapMode'),
         'default'      => '{map_legend},name,adress,showMark,googleApiKey;'.
-                          '{gfx_legend},mapMode,mapType,appButton,zoom,mobileScale,size,staticSize;'.
-                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude;',
+                          '{gfx_legend:hide},mapMode,mapType,appButton,zoom;'.
+                          '{mbl_legend:hide},mobileScale;'.
+                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude,size,staticSize;',
+
         '2'            => '{map_legend},name,adress,showMark,googleApiKey;'.
-                          '{gfx_legend},mapMode,mapType,appButton,hideUI,zoom,mobileScale,size,staticSize;'.
-                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude;',
+                          '{gfx_legend},mapMode,mapType,appButton,zoom,hideUI;'.
+                          '{opt_legend},zoomable,moveable;'.
+                          '{mbl_legend:hide},mbl_moveable,mbl_zoomable,mobileScale;'.
+                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude,size,staticSize;',
     ),
     // Fields
     'fields'   => array
@@ -213,7 +217,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'exclude'   => true,
             'default'   => false,
             'eval'      => array(
-                'tl_class' => 'w50 m12'
+                'tl_class' => 'clr w50 m12'
             ),
             'sql'       => "boolean NOT NULL"
         ),
@@ -225,7 +229,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'default'   => 16,
             'options'   => $zoomSteps,
             'eval'      => array(
-                'tl_class' => 'clr w50'
+                'tl_class' => 'w50'
             ),
             'sql'       => "tinyint(2) NOT NULL"
         ),
@@ -254,11 +258,47 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         'mobileScale'             => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mobileScale'],
             'inputType' => 'checkbox',
-            'default'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'clr w50 m12'
             ),
             'sql'       => "boolean NOT NULL"
+        ),
+        'zoomable' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['zoomable'],
+            'inputType' => 'checkbox',
+            'default'   => false,
+            'eval'      => array(
+                'tl_class' => 'clr w50 m12'
+            ),
+            'sql' => 'boolean NOT NULL'
+        ),
+        'moveable' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['moveable'],
+            'inputType' => 'checkbox',
+            'default'   => true,
+            'eval'      => array(
+                'tl_class' => 'w50 m12'
+            ),
+            'sql' => 'boolean NOT NULL'
+        ),
+        'mbl_zoomable' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'],
+            'inputType' => 'checkbox',
+            'default'   => true,
+            'eval'      => array(
+                'tl_class' => 'w50 m12'
+            ),
+            'sql' => 'boolean NOT NULL'
+        ),
+        'mbl_moveable' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'],
+            'inputType' => 'checkbox',
+            'default'   => true,
+            'eval'      => array(
+                'tl_class' => 'w50 m12'
+            ),
+            'sql' => 'boolean NOT NULL'
         ),
         'googleApiKey'            => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['googleApiKey'],
