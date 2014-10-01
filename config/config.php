@@ -21,5 +21,15 @@ $GLOBALS['FE_MOD']['contaoMaps'] = array
  */
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array
 (
-    'CMgetMap','getMap'
+    'CMgetMap',
+    'getMap'
+);
+
+/**
+ * Content element
+ */
+$GLOBALS['TL_CTE']['contaoMaps'] = array
+(
+    'map_list'   => 'ModuleContaoMapsList',
+    'single_map' => 'ModuleContaoMapsSingle',
 );

@@ -17,8 +17,9 @@
 ClassLoader::addClasses(array
 (
 	// Modules
-	'CMgetMap'             => 'system/modules/contaoMaps/modules/CMgetMap.php',
-	'ModuleContaoMapsList' => 'system/modules/contaoMaps/modules/ModuleContaoMapsList.php',
+	'CMgetMap'               => 'system/modules/contaoMaps/modules/CMgetMap.php',
+	'ModuleContaoMapsList'   => 'system/modules/contaoMaps/modules/ModuleContaoMapsList.php',
+	'ModuleContaoMapsSingle' => 'system/modules/contaoMaps/modules/ModuleContaoMapsSingle.php',
 ));
 
 
@@ -27,5 +28,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'list' => 'system/modules/contaoMaps/templates',
+	'list'   => 'system/modules/contaoMaps/templates',
+	'single' => 'system/modules/contaoMaps/templates',
 ));

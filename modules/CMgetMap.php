@@ -29,6 +29,6 @@ class CMgetMap extends Frontend
         $this->make($map);
 
         return '<div><div id="cm'.$this->map['mapID'].'" class="contaoMaps">'.
-               $this->map['map'].'</div>'.$this->map['appButton'].'</div>';;
+               $this->map['map'].'</div>'.$this->map['appButton'].'</div>';
     }
 }
