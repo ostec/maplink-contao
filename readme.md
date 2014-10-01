@@ -9,8 +9,7 @@ Requirements:
 
 Description
 ----------------------
-English:
-    Contao Maps (MapLink) is a Contao extension for device-dependent delivery of cards Materiel with referencing to the native application.
+Contao Maps (MapLink) is a Contao extension for device-dependent delivery of cards Materiel with referencing to the native application.
 
 
 Documentation
