@@ -57,6 +57,8 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'][0]            = 'Bewegen au
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'][1]            = 'Deaktiviert die Möglichkeit, die karte zu bewegen';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'][0]            = 'Zoom auf Mobilen Geräten deaktivieren';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'][1]            = 'Deaktiviert die Möglichkeit, denn Zoom der Karte zu ändern';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['staticFallback'][0]          = 'Static Fallback';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['staticFallback'][1]          = 'Kann eine Funktionelle Karte nicht dargestelt werden wird versucht eine Statische Karte Auszugeben';
 
 /*
  * selects

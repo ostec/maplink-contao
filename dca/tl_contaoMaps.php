@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
 
         '2'            => '{map_legend},name,adress,showMark,googleApiKey;'.
                           '{gfx_legend},mapMode,mapType,appButton,zoom,hideUI;'.
-                          '{opt_legend},zoomable,moveable;'.
+                          '{opt_legend},zoomable,moveable,staticFallback;'.
                           '{mbl_legend:hide},mbl_moveable,mbl_zoomable,mobileScale;'.
                           '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude,size,staticSize;',
     ),
@@ -266,6 +266,15 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         ),
         'zoomable' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['zoomable'],
+            'inputType' => 'checkbox',
+            'default'   => false,
+            'eval'      => array(
+                'tl_class' => 'clr w50 m12'
+            ),
+            'sql' => 'boolean NOT NULL'
+        ),
+        'staticFallback' => array(
+            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['staticFallback'],
             'inputType' => 'checkbox',
             'default'   => false,
             'eval'      => array(
