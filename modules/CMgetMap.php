@@ -23,13 +23,13 @@ class CMgetMap extends Frontend
     {
         $input = explode('::', $input);
 
-        if($input[0] != 'getMap') return false;
+        if ($input[0] != 'getMap') return false;
 
-        $id  = $input[1];
-        $map = DATABASE::getInstance()
-                       ->query('SELECT * FROM tl_contaoMaps WHERE '.
-                               (is_numeric($id) ? 'id = '.$id : 'name = "'.$id.'"'))
-                       ->fetchAssoc();
+        $id    = $input[1];
+        $where = is_numeric($id) ? 'id = '.$id : 'name = "'.$id.'"';
+        $map   = DATABASE::getInstance()
+                         ->query('SELECT * FROM tl_contaoMaps WHERE '.$where)
+                         ->fetchAssoc();
 
         $this->import('Environment');
         $this->make($map);

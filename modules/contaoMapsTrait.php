@@ -143,7 +143,6 @@ trait contaoMaps
     {
         if ($map['useLongitudeAndLatitude']) {
             return implode(',', unserialize($map['longitudeAndLatitude']));
-            $adress = $map['longitudeAndLatitude'];
         }
 
         return str_replace(" ", '+', $map['adress']);

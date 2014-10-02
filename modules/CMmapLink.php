@@ -23,22 +23,17 @@ class CMmapLink extends Frontend
     {
         $input = explode('::', $input);
 
-        if ($input[0] != 'mapLink') {
-            return false;
-        }
-        if (!$input = explode(',', $input[1])) {
-            trigger_error('param not valid', E_USER_ERROR);
-        }
+        if ($input[0] != 'mapLink') return false;
+        if (!$input = explode(',', $input[1])) trigger_error('param not valid', E_USER_ERROR);
 
-        $id = $input[0];
+        $id    = $input[0];
+        $where = is_numeric($id) ? 'id = '.$id : 'name = "'.$id.'"';
         /** @var \Contao\Database\Result $map */
         $map = DATABASE::getInstance()
-                       ->query(
-                           'SELECT * FROM tl_contaoMaps WHERE '.(is_numeric($id) ? 'id = '.$id : 'name = "'.$id.'"'))
+                       ->query('SELECT * FROM tl_contaoMaps WHERE '.$where)
                        ->fetchAssoc();
 
         if (is_array($map)) {
-
             if ($map['useLongitudeAndLatitude']) {
                 $map['longitudeAndLatitude'] = implode(',', unserialize($map['longitudeAndLatitude']));
                 $adress                      = $map['longitudeAndLatitude'];
