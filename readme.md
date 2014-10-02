@@ -2,7 +2,7 @@ ostec Contao Maps (MapLink)
 ======================
 Version: 1.0
 
-Requirements:
+Requirements
 ----------------------
     * Contao  3.3+
     * PHP     5.4+
