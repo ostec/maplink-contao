@@ -308,7 +308,6 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             'search'    => true,
             'default'   => '',
             'eval'      => array(
-                'mandatory' => true,
                 'maxlength' => 255,
                 'tl_class'  => 'w50',
             ),
