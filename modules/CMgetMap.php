@@ -15,16 +15,20 @@ class CMgetMap extends Frontend
     /**
      * using by insert tag return map source code
      *
-     * @param int $id
+     * @param int $input
      *
      * @return mixed
      */
-    protected function getMap($id)
+    protected function getMap($input)
     {
-        $id  = explode('::', $id);
-        $id  = $id[1];
+        $input = explode('::', $input);
+
+        if($input[0] != 'getMap') return false;
+
+        $id  = $input[1];
         $map = DATABASE::getInstance()
-                       ->query('SELECT * FROM tl_contaoMaps WHERE id = '.$id)
+                       ->query('SELECT * FROM tl_contaoMaps WHERE '.
+                               (is_numeric($id) ? 'id = '.$id : 'name = "'.$id.'"'))
                        ->fetchAssoc();
 
         $this->import('Environment');

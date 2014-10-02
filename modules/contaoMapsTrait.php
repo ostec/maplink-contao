@@ -80,7 +80,7 @@ trait contaoMaps
             $parse['%'.$key.'%'] = $val;
         }
 
-        $this->map['mapID']        = $map['id'];
+        $this->map['mapID']     = $map['id'];
         $this->map['map']       = $this->getFileReplace($parse, '/js/functional.js');
         $this->map['appButton'] = null;
         $this->map['external']  = true;
@@ -142,8 +142,9 @@ trait contaoMaps
      *
      * @param $map
      * @param $adress
+     * @param $userMessage
      */
-    protected function appButton($map, $adress)
+    protected function appButton($map, $adress, $userMessage = null)
     {
         $appButton = '';
 
@@ -171,7 +172,8 @@ trait contaoMaps
             }
 
             $appButton = '<a href="http://maps.'.$service.'.com/?'.
-                         ($service == 'bing' ? 'where' : 'q').'='.$adress.'">'.$message.'</a>';
+                         ($service == 'bing' ? 'where' : 'q').'='.$adress.'">'.
+                         ($userMessage == null ? $message : $userMessage).'</a>';
         }
 
         $this->map['appButton'] = $appButton;

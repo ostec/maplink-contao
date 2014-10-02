@@ -25,6 +25,13 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array
     'getMap'
 );
 
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array
+(
+    'CMmapLink',
+    'mapLink'
+);
+
+
 /**
  * Content element
  */
