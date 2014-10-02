@@ -285,7 +285,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         'moveable' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['moveable'],
             'inputType' => 'checkbox',
-            'default'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'w50 m12'
             ),
@@ -294,7 +294,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         'mbl_zoomable' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_zoomable'],
             'inputType' => 'checkbox',
-            'default'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'w50 m12'
             ),
@@ -303,7 +303,7 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
         'mbl_moveable' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['mbl_moveable'],
             'inputType' => 'checkbox',
-            'default'   => true,
+            'default'   => false,
             'eval'      => array(
                 'tl_class' => 'w50 m12'
             ),

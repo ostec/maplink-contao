@@ -69,20 +69,28 @@ trait contaoMaps
      */
     protected function functionalMap($map)
     {
-        $arrays = array('longitudeAndLatitude', 'staticSize');
-        $parse  = array();
+        $mapOptions = array(
+            'noClear'           => true,
+            'zoom'              => (int)$map['zoom'],
+            'disableDefaultUI'  => (boolean)$map['hideUI'],
+            'draggable'         => (in_array($this->Environment->agent->os,$this->functional) ?
+                (boolean)!$map['moveable'] : (boolean)!$map['mbl_moveable']),
+            'zoomControl'       => (in_array($this->Environment->agent->os,$this->functional) ?
+                (boolean)!$map['zoomable'] : (boolean)!$map['mbl_zoomable']),
+            'scrollwheel'       => (in_array($this->Environment->agent->os,$this->functional) ?
+                (boolean)!$map['zoomable'] : (boolean)!$map['mbl_zoomable']),
+        );
 
-        foreach ($map as $key => $val) {
-            if (in_array($key, $arrays)) {
-                $val = json_encode(unserialize($val), JSON_HEX_QUOT | JSON_HEX_APOS);
-            }
+        $parse  = array(
+            '%id%'         => $map['id'],
+            '%adress%'     => $this->getAdress($map),
+            '%mapOptions%' => json_encode($mapOptions)
+        );
 
-            $parse['%'.$key.'%'] = $val;
-        }
+        $this->appButton($map,$this->getAdress($map));
 
         $this->map['mapID']     = $map['id'];
         $this->map['map']       = $this->getFileReplace($parse, '/js/functional.js');
-        $this->map['appButton'] = null;
         $this->map['external']  = true;
     }
 
@@ -100,13 +108,7 @@ trait contaoMaps
                    '&key='.$map['googleApiKey'].
                    ($this->Environment->agent->mobile && $map['mobileScale'] ? '&scale=2' : '');
 
-        if ($map['useLongitudeAndLatitude']) {
-            $map['longitudeAndLatitude'] = implode(',', unserialize($map['longitudeAndLatitude']));
-            $adress                      = $map['longitudeAndLatitude'];
-        } else {
-            $map['adress'] = str_replace(" ", '+', $map['adress']);
-            $adress        = $map['adress'];
-        }
+        $adress = $this->getAdress($map);
 
         if ($map['showMark']) {
             $mapLink .= '&markers=size:mid|color:red|'.$adress;
@@ -135,6 +137,16 @@ trait contaoMaps
         }
 
         $this->appButton($map, $adress);
+    }
+
+    protected function getAdress($map)
+    {
+        if ($map['useLongitudeAndLatitude']) {
+            return implode(',', unserialize($map['longitudeAndLatitude']));
+            $adress = $map['longitudeAndLatitude'];
+        }
+
+        return str_replace(" ", '+', $map['adress']);
     }
 
     /**
