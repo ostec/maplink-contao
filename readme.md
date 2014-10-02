@@ -15,7 +15,7 @@ Contao Maps (MapLink) is a Contao extension for device-dependent delivery of car
 
 Documentation
 ----------------------
- * [User Guide][2]
+ * [User Guide (DEU)][2]
  * [FAQ][3]
  * [Changelog][4]
 
@@ -30,7 +30,7 @@ Developed by [ostec][1]
 Icon by [Double-J Design][5]
     
 [1]: http://www.ostec.de
-[2]: notlinkedyet
-[3]: notlinkedyet
-[4]: notlinkedyet
+[2]: https://github.com/ostec/maplink-contao/wiki/User-Guide-(DEU)
+[3]: https://github.com/ostec/maplink-contao/wiki/FAQ
+[4]: https://github.com/ostec/maplink-contao/blob/master/changes.md
 [5]: http://www.doublejdesign.co.uk
