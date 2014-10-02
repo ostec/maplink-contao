@@ -70,28 +70,28 @@ trait contaoMaps
     protected function functionalMap($map)
     {
         $mapOptions = array(
-            'noClear'           => true,
-            'zoom'              => (int)$map['zoom'],
-            'disableDefaultUI'  => (boolean)$map['hideUI'],
-            'draggable'         => (in_array($this->Environment->agent->os,$this->functional) ?
+            'noClear'          => true,
+            'zoom'             => (int)$map['zoom'],
+            'disableDefaultUI' => (boolean)$map['hideUI'],
+            'draggable'        => (in_array($this->Environment->agent->os, $this->functional) ?
                 (boolean)!$map['moveable'] : (boolean)!$map['mbl_moveable']),
-            'zoomControl'       => (in_array($this->Environment->agent->os,$this->functional) ?
+            'zoomControl'      => (in_array($this->Environment->agent->os, $this->functional) ?
                 (boolean)!$map['zoomable'] : (boolean)!$map['mbl_zoomable']),
-            'scrollwheel'       => (in_array($this->Environment->agent->os,$this->functional) ?
-                (boolean)!$map['zoomable'] : (boolean)!$map['mbl_zoomable']),
+            'scrollwheel'      => (in_array($this->Environment->agent->os, $this->functional) ?
+                (boolean)!$map['zoomable'] : (boolean)!$map['mbl_zoomable'])
         );
 
-        $parse  = array(
-            '%id%'         => $map['id'],
-            '%adress%'     => $this->getAdress($map),
-            '%mapOptions%' => json_encode($mapOptions)
+        $parse = array(
+            '%id%'             => $map['id'],
+            '%adress%'         => $this->getAdress($map),
+            '%mapOptions%'     => json_encode($mapOptions),
         );
 
-        $this->appButton($map,$this->getAdress($map));
+        $this->appButton($map, $this->getAdress($map));
 
-        $this->map['mapID']     = $map['id'];
-        $this->map['map']       = $this->getFileReplace($parse, '/js/functional.js');
-        $this->map['external']  = true;
+        $this->map['mapID']    = $map['id'];
+        $this->map['map']      = $this->getFileReplace($parse, '/js/functional.js');
+        $this->map['external'] = true;
     }
 
     /**

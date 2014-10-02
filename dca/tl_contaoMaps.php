@@ -273,15 +273,6 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
             ),
             'sql' => 'boolean NOT NULL'
         ),
-        'staticFallback' => array(
-            'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['staticFallback'],
-            'inputType' => 'checkbox',
-            'default'   => false,
-            'eval'      => array(
-                'tl_class' => 'clr w50 m12'
-            ),
-            'sql' => 'boolean NOT NULL'
-        ),
         'moveable' => array(
             'label'     => &$GLOBALS['TL_LANG']['tl_contaoMaps']['moveable'],
             'inputType' => 'checkbox',
