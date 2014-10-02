@@ -27,6 +27,7 @@ Installation
 Credits
 ----------------------
 Developed by [ostec][1]
+
 Icon by [Double-J Design][5]
     
 [1]: http://www.ostec.de
