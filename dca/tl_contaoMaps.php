@@ -91,9 +91,9 @@ $GLOBALS['TL_DCA']['tl_contaoMaps'] = array
 
         '2'            => '{map_legend},name,adress,showMark,googleApiKey;'.
                           '{gfx_legend},mapMode,mapType,appButton,zoom,hideUI;'.
-                          '{opt_legend},zoomable,moveable,staticFallback;'.
+                          '{opt_legend},zoomable,moveable;'.
                           '{mbl_legend:hide},mbl_moveable,mbl_zoomable,mobileScale;'.
-                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude,size,staticSize;',
+                          '{adv_legend},useLongitudeAndLatitude,longitudeAndLatitude;',
     ),
     // Fields
     'fields'   => array

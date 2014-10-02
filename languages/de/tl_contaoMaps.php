@@ -67,4 +67,4 @@ $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapMode'][2] = 'Funktionell';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][1] = 'Einfach';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][2] = 'Satellite';
 $GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][3] = 'Hybrid';
-$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][4] = 'Terrain';
+$GLOBALS['TL_LANG']['tl_contaoMaps']['selection']['mapType'][4] = 'Gelände';
