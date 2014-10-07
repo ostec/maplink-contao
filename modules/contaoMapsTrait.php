@@ -46,6 +46,8 @@ trait contaoMaps
      */
     protected function make($map)
     {
+        $this->map = null;
+
         switch ($map['mapMode']) {
             case 1:
                 $this->staticMap($map);

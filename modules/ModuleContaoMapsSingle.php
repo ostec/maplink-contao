@@ -25,13 +25,14 @@ class ModuleContaoMapsSingle extends ContentElement
     protected function compile()
     {
         /** @var \Contao\Database\Result $rs */
-        $map = DATABASE::getInstance()
+        if($map = DATABASE::getInstance()
                        ->query('SELECT * FROM tl_contaoMaps WHERE id = '.(int)$this->cmMapId)
-                       ->fetchAssoc();
+                       ->fetchAssoc()) {
 
-        $this->import('Environment');
-        $this->make($map);
+            $this->import('Environment');
+            $this->make($map);
 
-        $this->Template->map = $this->map;
+            $this->Template->map = $this->map;
+        }
     }
 }
