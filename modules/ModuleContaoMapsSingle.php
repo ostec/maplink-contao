@@ -26,7 +26,7 @@ class ModuleContaoMapsSingle extends ContentElement
     {
         /** @var \Contao\Database\Result $rs */
         $map = DATABASE::getInstance()
-                       ->query('SELECT * FROM tl_contaoMaps WHERE id = '.$this->cmMapId)
+                       ->query('SELECT * FROM tl_contaoMaps WHERE id = '.(int)$this->cmMapId)
                        ->fetchAssoc();
 
         $this->import('Environment');

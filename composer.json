@@ -1,0 +1,22 @@
+{
+    "name": "contaoMaps/behat",
+    "description": "",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Manuel Rogoll",
+            "email": "manuel@ostec.de"
+        }
+    ],
+    "require": {
+        "behat/behat": "3.0.x-dev",
+        "behat/mink": "1.6.x-dev",
+        "behat/mink-extension": "2.0.x-dev",
+        "behat/mink-goutte-driver": "1.1.x-dev",
+        "behat/mink-selenium2-driver": "1.2.x-dev"
+    },
+    "config" : {
+        "bin-dir": "bin/"
+    }
+}
