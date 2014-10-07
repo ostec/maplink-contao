@@ -185,7 +185,7 @@ trait contaoMaps
             }
 
             $appButton = '<a href="http://maps.'.$service.'.com/?'.
-                         ($service == 'bing' ? 'where' : 'q').'='.$adress.'">'.
+                         ($service == 'bing' ? 'where' : 'q').'='.$adress.'" class="maplink">'.
                          ($userMessage == null ? $message : $userMessage).'</a>';
         }
 
